@@ -244,16 +244,17 @@ This project aims to create a digital space where distance does not prevent coup
 
 # 👨‍💻 Author
 
-**Belio C. Sinangote**
+**Kiraend**
 
-BS Information Technology Student
+Full-Stack Developer & Technology Enthusiast
 
 Interested in:
 
 * Web Development
 * Automation
-* AI Applications
-* Real-Time Web Technologies
+* Artificial Intelligence
+* Real-Time Web Applications
+* Creative Digital Experiences
 
 ---
 
