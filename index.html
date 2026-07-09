@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>❤️ LDR Memory Booth</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+
+<body>
+
+
+<div class="app">
+
+
+<!-- HEADER -->
+
+<header class="header">
+
+<div class="brand">
+
+<div class="heart-logo">
+❤️
+</div>
+
+<div>
+
+<h1>
+LDR Memory Booth
+</h1>
+
+<p>
+Two places. One memory.
+</p>
+
+</div>
+
+</div>
+
+</header>
+
+
+
+
+
+<!-- ================= CREATE / JOIN ROOM ================= -->
+
+
+<section id="homeScreen" class="screen active">
+
+
+<div class="hero-card">
+
+
+<h2>
+❤️ Welcome To Your Memory Booth
+</h2>
+
+
+<p>
+Create a private photobooth room and capture memories together, even from miles away.
+</p>
+
+
+
+<div class="room-buttons">
+
+
+<button id="createRoomBtn">
+
+❤️ Create Couple Room
+
+</button>
+
+
+
+<button id="joinModeBtn">
+
+🔗 Join With Code
+
+</button>
+
+
+</div>
+
+
+
+
+<div id="createPanel" class="hidden">
+
+
+<h3>
+Create Your Couple Room
+</h3>
+
+
+<input 
+id="yourName"
+placeholder="Your name">
+
+
+<input
+id="partnerName"
+placeholder="Partner name">
+
+
+<button id="generateRoomBtn">
+
+Create Room ❤️
+
+</button>
+
+
+</div>
+
+
+
+
+<div id="joinPanel" class="hidden">
+
+
+<h3>
+Join Your Partner
+</h3>
+
+
+<input
+id="inviteInput"
+placeholder="Enter invitation code">
+
+
+<button id="joinRoomBtn">
+
+Join Room ❤️
+
+</button>
+
+
+</div>
+
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+
+
+<!-- ================= ROOM LOBBY ================= -->
+
+
+<section id="lobbyScreen" class="screen hidden">
+
+
+<div class="lobby-card">
+
+
+<h2>
+❤️ Couple Room
+</h2>
+
+
+
+<div class="couple-display">
+
+
+<div class="person">
+
+<div class="avatar">
+❤️
+</div>
+
+
+<span id="hostName">
+You
+</span>
+
+
+</div>
+
+
+
+<div class="heart">
+❤️
+</div>
+
+
+
+<div class="person">
+
+
+<div class="avatar">
+❤️
+</div>
+
+
+<span id="guestName">
+Partner
+</span>
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+<div class="invite-box">
+
+
+<p>
+Invitation Code
+</p>
+
+
+<h1 id="roomCode">
+
+LOVE-0000
+
+</h1>
+
+
+<button id="copyCodeBtn">
+
+Copy Code
+
+</button>
+
+
+</div>
+
+
+
+
+<div class="connection-status">
+
+
+🟡 Waiting for partner...
+
+
+</div>
+
+
+
+
+<button id="enterBoothBtn">
+
+
+📸 Enter Photobooth
+
+
+</button>
+
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+
+
+<!-- ================= PHOTOBOOTH ================= -->
+
+
+<section id="boothScreen" class="screen hidden">
+
+
+<div class="booth-card">
+
+
+<h2>
+❤️ Couple Photobooth Studio
+</h2>
+
+
+
+
+<!-- THEME -->
+
+
+<div class="theme-selector">
+
+
+<h3>
+Choose Theme
+</h3>
+
+
+<button data-theme="love">
+
+❤️ Love
+
+</button>
+
+
+<button data-theme="sakura">
+
+🌸 Sakura
+
+</button>
+
+
+<button data-theme="night">
+
+🌙 Midnight
+
+</button>
+
+
+<button data-theme="retro">
+
+🎞 Retro
+
+</button>
+
+
+</div>
+
+
+
+
+
+
+
+
+<!-- CAMERA AREA -->
+
+
+<div class="camera-container">
+
+
+
+<div class="camera-card">
+
+
+<h3>
+You
+</h3>
+
+
+<video 
+id="localVideo"
+autoplay
+muted>
+
+</video>
+
+
+</div>
+
+
+
+
+
+<div class="camera-card">
+
+
+<h3>
+Partner
+</h3>
+
+
+<video 
+id="remoteVideo"
+autoplay>
+
+</video>
+
+
+<div id="partnerWaiting">
+
+Waiting for partner ❤️
+
+</div>
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<!-- MERGED PREVIEW -->
+
+
+<div class="merged-preview">
+
+
+<h3>
+Combined Memory Preview
+</h3>
+
+
+<canvas id="photoCanvas">
+
+</canvas>
+
+
+</div>
+
+
+
+
+
+
+
+<div id="photoCounter">
+
+
+Photo 0 / 6
+
+</div>
+
+
+
+<div id="countdown">
+
+</div>
+
+
+
+
+<button id="startSessionBtn">
+
+📸 Start 6 Photo Session
+
+</button>
+
+
+
+<button id="captureBtn">
+
+
+Capture Photo
+
+
+</button>
+
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+
+
+
+<!-- ================= MEMORY STRIP ================= -->
+
+
+
+<section id="memoryScreen" class="screen hidden">
+
+
+
+<div class="memory-card">
+
+
+<h2>
+❤️ Your LDR Memory Strip
+</h2>
+
+
+
+
+<div class="strip-container">
+
+
+<canvas id="finalStrip">
+
+</canvas>
+
+
+</div>
+
+
+
+
+
+<div class="memory-buttons">
+
+
+<button id="downloadBtn">
+
+⬇ Download
+
+</button>
+
+
+
+<button id="printBtn">
+
+🖨 Print
+
+</button>
+
+
+</div>
+
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+
+
+
+
+<!-- GALLERY -->
+
+
+<section class="gallery-card">
+
+
+<h2>
+Our Memories ❤️
+</h2>
+
+
+<div id="gallery">
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+<footer>
+
+Made with ❤️ for couples across the distance
+
+</footer>
+
+
+
+</div>
+
+
+
+
+<script src="script.js"></script>
+
+
+</body>
+
+</html>
